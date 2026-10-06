@@ -1,0 +1,197 @@
+/* =========================================================
+   VARIABLES DE DISEÑO PLANO Y ELEGANTE
+   ========================================================= */
+:root {
+  --primary-color: #0f172a;        /* Slate oscuro para acentos principales */
+  --accent-color: #2563eb;         /* Azul activo para el estado de enfoque (Focus) */
+  --accent-soft: rgba(37, 99, 235, 0.12); /* Sombra plana para control activo */
+  
+  --bg-form: #ffffff;             /* Fondo del contenedor */
+  --bg-input: #f8fafc;            /* Fondo neutro plano de los controles */
+  --bg-input-focus: #ffffff;      /* Fondo al seleccionar/enfocar */
+  
+  --border-color: #cbd5e1;        /* Borde gris tenue por defecto */
+  --border-focus: #2563eb;        /* Borde resaltado al enfocar */
+  
+  --text-main: #1e293b;           /* Texto principal */
+  --text-muted: #64748b;          /* Texto secundario / Placeholders */
+  
+  --radius: 6px;                  /* Bordes ligeramente redondeados (Elegante) */
+  --transition: all 0.2s ease-in-out;
+}
+
+/* Restablecimiento general para formularios */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   ESTRUCTURA Y RESPONSIVIDAD DEL FORMULARIO
+   ========================================================= */
+.form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: var(--bg-form);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra muy tenue y plana */
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.form-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Grid Responsivo para los campos */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas/grandes */
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clase para campos que ocupan todo el ancho */
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Adaptación a pantallas pequeñas (Mobile) */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr; /* 1 sola columna en celulares */
+  }
+  .form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+/* =========================================================
+   ETIQUETAS (LABELS)
+   ========================================================= */
+.form-label {
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   CONTROLES: INPUT TEXT Y SELECT
+   ========================================================= */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius);
+  outline: none;
+  transition: var(--transition);
+  appearance: none; /* Elimina estilos nativos del sistema */
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Personalización del icono en la lista desplegable (Select) */
+.form-select-wrapper {
+  position: relative;
+}
+
+.form-select-wrapper::after {
+  content: '▼';
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* =========================================================
+   ÉNFASIS EN EL CONTROL ACTIVO (:focus / :focus-visible)
+   ========================================================= */
+.form-input:focus,
+.form-select:focus {
+  background-color: var(--bg-input-focus);
+  border-color: var(--border-focus);
+  /* Énfasis plano: Sombra dura o resalte limpio alrededor del control activo */
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  transform: translateY(-1px); /* Elevación sutil al enfocar */
+}
+
+/* Cambia la etiqueta del control activo */
+.form-group:focus-within .form-label {
+  color: var(--accent-color);
+}
+
+/* =========================================================
+   BOTONES (BUTTON)
+   ========================================================= */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón Primario */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+/* Botón Secundario / Cancelar */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+}
+
+/* Énfasis en el botón al ser enfocado con teclado (Enter / Tab) */
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  border-color: var(--accent-color);
+}

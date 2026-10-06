@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Plano y Elegante</title>
+  <link rel="stylesheet" href="CSS/estilos-formularios.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2 class="form-title">Registro de Usuario</h2>
+    
+    <form action="#" method="POST">
+      <div class="form-grid">
+        
+        <!-- Campo Input Text -->
+        <div class="form-group">
+          <label class="form-label" for="nombres">Nombres</label>
+          <input type="text" id="nombres" class="form-input" placeholder="Ej. Juan Carlos" required>
+        </div>
+
+        <!-- Campo Input Text -->
+        <div class="form-group">
+          <label class="form-label" for="apellidos">Apellidos</label>
+          <input type="text" id="apellidos" class="form-input" placeholder="Ej. Pérez Gómez" required>
+        </div>
+
+        <!-- Campo Select -->
+        <div class="form-group">
+          <label class="form-label" for="documento-tipo">Tipo de Documento</label>
+          <div class="form-select-wrapper">
+            <select id="documento-tipo" class="form-select" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option value="dni">DNI / Documento de Identidad</option>
+              <option value="pasaporte">Pasaporte</option>
+              <option value="ce">Carnet de Extranjería</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Campo Input Text -->
+        <div class="form-group">
+          <label class="form-label" for="documento-num">Número de Documento</label>
+          <input type="text" id="documento-num" class="form-input" placeholder="12345678" required>
+        </div>
+
+        <!-- Campo Select ocupando ancho completo -->
+        <div class="form-group full-width">
+          <label class="form-label" for="cargo">Área o Departamento</label>
+          <div class="form-select-wrapper">
+            <select id="cargo" class="form-select" required>
+              <option value="" disabled selected>Seleccione su área</option>
+              <option value="ti">Tecnología de la Información</option>
+              <option value="administracion">Administración y Finanzas</option>
+              <option value="operaciones">Operaciones y Logística</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Datos</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
